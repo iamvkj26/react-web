@@ -2,20 +2,28 @@ import { useState } from "react";
 
 const LS = () => {
 
-    const [posts, setPosts] = useState([]);
+    const [posts, setPosts] = useState(() => {
+        const stored = localStorage.getItem("posts");
+        return stored ? JSON.parse(stored) : [];
+    });
     const [newPost, setNewPost] = useState({ title: "", body: "" });
     const [editId, setEditId] = useState(null);
     const [editPost, setEditPost] = useState({ title: "", body: "" });
 
+    const saveToLocalStorage = (data) => localStorage.setItem("posts", JSON.stringify(data));
+
     const createPost = () => {
         const post = { id: Date.now(), ...newPost };
-        setPosts([...posts, post]);
+        const updatedPosts = [...posts, post];
+        setPosts(updatedPosts);
+        saveToLocalStorage(updatedPosts);
         setNewPost({ title: "", body: "" });
     };
 
     const deletePost = (id) => {
-        const updated = posts.filter(post => post.id !== id);
-        setPosts(updated);
+        const updatedPosts = posts.filter(post => post.id !== id);
+        setPosts(updatedPosts);
+        saveToLocalStorage(updatedPosts);
     };
 
     const startEdit = (post) => {
@@ -24,10 +32,9 @@ const LS = () => {
     };
 
     const updatePost = () => {
-        const updated = posts.map(post =>
-            post.id === editId ? { ...post, ...editPost } : post
-        );
-        setPosts(updated);
+        const updatedPosts = posts.map(post => post.id === editId ? { ...post, ...editPost } : post);
+        setPosts(updatedPosts);
+        saveToLocalStorage(updatedPosts);
         setEditId(null);
         setEditPost({ title: "", body: "" });
     };
