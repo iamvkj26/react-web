@@ -5,12 +5,13 @@ import HOC from "./HOC";
 import PropsDrilling from "./propsDrilling/PropsDrilling";
 import CustomHook from "./customHook/CustomHook";
 import LS from "./localStorage/LS";
+import Axios from "./axios/Axios";
 import OneToFive from "./oneToFive/OneToFive";
 import SixToEight from "./sixToEight/SixToEight";
 import TenToEleven from "./tenToEleven/TenToEleven";
 import TwelveToTwenty from "./twelveToTwenty/TwelveToTwenty";
-import { ThemeContext } from "./context/ThemeContext";
 import TwentyOneToTwentyFive from "./twentyOneToTwentyFive/TwentyOneToTwentyFive";
+import { ThemeContext } from "./context/ThemeContext";
 
 const App = () => {
 
@@ -24,7 +25,8 @@ const App = () => {
                 <div className="container">
                     <div className="row">
                         <Routes>
-                            <Route path="/" element={<HOC />} />
+                            <Route path="/" element={<Axios />} />
+                            <Route path="/hoc" element={<HOC />} />
                             <Route path="/propsDrilling" element={<PropsDrilling user={user} />} />
                             <Route path="/customHook" element={<CustomHook />} />
                             <Route path="/ls" element={<LS />} />

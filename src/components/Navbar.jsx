@@ -32,7 +32,10 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/">HOC</NavLink>
+                                <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/">Axios</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/hoc">HOC</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/propsDrilling">Props Drilling</NavLink>
