@@ -1,7 +1,8 @@
 import axios from "axios";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const api = axios.create({
-    baseURL: "https://cosmic-lokum-59861f.netlify.app/.netlify/functions/index/api",
+    baseURL: `${apiUrl}`,
     headers: {
         "Content-Type": "application/json",
     },
