@@ -6,7 +6,7 @@ const Axios = () => {
 
     const [postUsers, setPostUsers] = useState({ email: "", name: "", age: "", gender: "", city: "" });
     const [getUsers1, setGetUsers1] = useState([]);
-    const [updateUsers, setUpdateUsers] = useState({ _id: "", eemail: "", ename: "", eage: "", egender: "", ecity: "" });
+    const [updateUsers, setUpdateUsers] = useState({ id: "", eemail: "", ename: "", eage: "", egender: "", ecity: "" });
     const refOpenCanvas = useRef(null);
 
     const handleAddUsers = async () => {
@@ -30,7 +30,7 @@ const Axios = () => {
 
     const updateUser = (currentUser) => {
         refOpenCanvas.current.click();
-        setUpdateUsers({ _id: currentUser._id, eemail: currentUser.email, ename: currentUser.name, eage: currentUser.age, egender: currentUser.gender, ecity: currentUser.city })
+        setUpdateUsers({ id: currentUser.id, eemail: currentUser.email, ename: currentUser.name, eage: currentUser.age, egender: currentUser.gender, ecity: currentUser.city })
     };
 
     const handleDelete = async (id) => {
@@ -53,14 +53,14 @@ const Axios = () => {
                 <div className="card-body">
                     <h5 className="card-title">Axios</h5>
                     <h6 className="card-text">Create User</h6>
-                    <div className="input-group mb-3">
+                    <form className="input-group mb-3">
                         <input type="email" className="form-control" placeholder="Add email..." id="email" name="email" value={postUsers.email} onChange={changeAddUser} required />
                         <input type="text" className="form-control" placeholder="Add name..." id="name" name="name" value={postUsers.name} onChange={changeAddUser} required />
                         <input type="number" className="form-control" placeholder="Add age..." id="age" name="age" value={postUsers.age} onChange={changeAddUser} required />
                         <input type="text" className="form-control" placeholder="Add gender..." id="gender" name="gender" value={postUsers.gender} onChange={changeAddUser} required />
                         <input type="text" className="form-control" placeholder="Add city..." id="city" name="city" value={postUsers.city} onChange={changeAddUser} required />
                         <button className="btn btn-outline-secondary" type="button" onClick={handleAddUsers} disabled={postUsers.length === 5}>Add User</button>
-                    </div>
+                    </form>
                     <div className="card mb-3">
                         <div className="card-body">
                             <h6 className="card-text">All Users</h6>
@@ -85,14 +85,14 @@ const Axios = () => {
                                         {
                                             getUsers1?.map((element, index) => {
                                                 return (
-                                                    <tr key={element._id}>
+                                                    <tr key={element.id}>
                                                         <th scope="row">{index + 1}</th>
                                                         <td>{element.email}</td>
                                                         <td>{element.name}</td>
                                                         <td>{element.age}</td>
                                                         <td>{element.gender}</td>
                                                         <td>{element.city}</td>
-                                                        <td><button className="btn btn-outline-warning" onClick={() => { updateUser(element) }}>Edit</button> | <button className="btn btn-outline-danger" onClick={() => handleDelete(element._id)}>Delete</button></td>
+                                                        <td><button className="btn btn-outline-warning" onClick={() => { updateUser(element) }}>Edit</button> | <button className="btn btn-outline-danger" onClick={() => handleDelete(element.id)}>Delete</button></td>
                                                     </tr>
                                                 )
                                             })

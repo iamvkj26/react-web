@@ -13,16 +13,16 @@ export const postUser = async (addData) => {
 export const getUsers = async () => {
     try {
         const response = await api.get("/getAll");
-        return response.data;
+        return response.data.data;
     } catch (error) {
         console.error(error.message);
         throw error;
     };
 };
 
-export const updateUser = async (_id, email, name, age, gender, city) => {
+export const updateUser = async (id, email, name, age, gender, city) => {
     try {
-        const response = await api.patch(`/update/${_id}`, { email, name, age, gender, city });
+        const response = await api.patch(`/update/${id}`, { email, name, age, gender, city });
         return response.data;
     } catch (error) {
         console.error(error.message);

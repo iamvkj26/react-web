@@ -7,7 +7,7 @@ const AxiosUpdate = ({ refOpenCanvas, updateUsers, setUpdateUsers, fetchUsers })
 
     const handleUpdateUsers = async () => {
         try {
-            await updateUser(updateUsers._id, updateUsers.eemail, updateUsers.ename, updateUsers.eage, updateUsers.egender, updateUsers.ecity);
+            await updateUser(updateUsers.id, updateUsers.eemail, updateUsers.ename, updateUsers.eage, updateUsers.egender, updateUsers.ecity);
             alert("User updated successfully")
             refCloseCanvas.current.click();
             fetchUsers();
